@@ -33,6 +33,7 @@ in {
   ];
 
   programs.ags.enable = true;
+  home.packages = dependencies;
 
   systemd.user.services.ags = {
     Unit = {

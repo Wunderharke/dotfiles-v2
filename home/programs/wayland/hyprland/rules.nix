@@ -54,7 +54,7 @@
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
       # start spotify in ws9
-      "workspace 9 silent, title:^(Spotify( Premium)?)$"
+      "workspace 9 silent, title:^(Tidal?)$"
 
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe|celluloid)$"

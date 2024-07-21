@@ -1,7 +1,7 @@
 {
   programs.firefox = {
     enable = true;
-    profiles.mihai = {
+    profiles.falk = {
       userChrome = ''
         /* Sidebery settings:
         #root.root {--general-border-radius: 8px;}

@@ -7,17 +7,9 @@
   extraSpecialArgs = {inherit inputs self;};
 
   homeImports = {
-    "mihai@io" = [
+    "falk@framework" = [
       ../.
-      ./io
-    ];
-    "mihai@rog" = [
-      ../.
-      ./rog
-    ];
-    server = [
-      ../.
-      ./server
+      ./framework
     ];
   };
 
@@ -30,18 +22,8 @@ in {
 
   flake = {
     homeConfigurations = {
-      "mihai_io" = homeManagerConfiguration {
-        modules = homeImports."mihai@io";
-        inherit pkgs extraSpecialArgs;
-      };
-
-      "mihai_rog" = homeManagerConfiguration {
-        modules = homeImports."mihai@rog";
-        inherit pkgs extraSpecialArgs;
-      };
-
-      server = homeManagerConfiguration {
-        modules = homeImports.server;
+      "falk_framework" = homeManagerConfiguration {
+        modules = homeImports."falk@framework";
         inherit pkgs extraSpecialArgs;
       };
     };

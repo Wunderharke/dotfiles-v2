@@ -13,7 +13,7 @@
 
     # audio
     amberol
-    spotify
+    tidal-hifi
 
     # images
     loupe

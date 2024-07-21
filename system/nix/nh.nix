@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   # nh default flake
-  environment.variables.FLAKE = "/home/mihai/Documents/code/dotfiles";
+  environment.variables.FLAKE = "/home/falk/Documents/code/dotfiles";
 
   programs.nh = {
     enable = true;

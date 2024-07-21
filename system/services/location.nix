@@ -1,7 +1,7 @@
 {
   # enable location service
-  location.provider = "geoclue2";
+  #location.provider = "geoclue2";
 
   # provide location
-  services.geoclue2.enable = true;
+  #services.geoclue2.enable = true;
 }

@@ -14,7 +14,7 @@
 
   services = {
     openssh = {
-      enable = true;
+      enable = false;
       settings.UseDns = true;
     };
 

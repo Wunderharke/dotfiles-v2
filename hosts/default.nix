@@ -7,77 +7,39 @@
   flake.nixosConfigurations = let
     # shorten paths
     inherit (inputs.nixpkgs.lib) nixosSystem;
-    howdy = inputs.nixpkgs-howdy;
     mod = "${self}/system";
 
     # get the basic config to build on top of
-    inherit (import "${self}/system") desktop laptop;
+    inherit (import "${self}/system") laptop;
 
     # get these into the module system
     specialArgs = {inherit inputs self;};
   in {
-    io = nixosSystem {
+    framework = nixosSystem {
       inherit specialArgs;
       modules =
         laptop
         ++ [
-          ./io
-          "${mod}/core/lanzaboote.nix"
+          ./framework
+          #"${mod}/core/lanzaboote.nix"
 
-          "${mod}/programs/gamemode.nix"
           "${mod}/programs/hyprland.nix"
-          "${mod}/programs/games.nix"
 
-          "${mod}/network/spotify.nix"
-          "${mod}/network/syncthing.nix"
-
-          "${mod}/services/kanata"
           "${mod}/services/gnome-services.nix"
           "${mod}/services/location.nix"
 
           {
             home-manager = {
-              users.mihai.imports = homeImports."mihai@io";
+              users.falk.imports = homeImports."falk@framework";
+      	      backupFileExtension = "bak";
               extraSpecialArgs = specialArgs;
             };
           }
 
-          # enable unmerged Howdy
-          {disabledModules = ["security/pam.nix"];}
-          "${howdy}/nixos/modules/security/pam.nix"
-          "${howdy}/nixos/modules/services/security/howdy"
-          "${howdy}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
-
+          inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
           inputs.agenix.nixosModules.default
           inputs.chaotic.nixosModules.default
         ];
     };
-
-    # rog = nixosSystem {
-    #   inherit specialArgs;
-    #   modules =
-    #     laptop
-    #     ++ [
-    #       ./rog
-    #       "${mod}/core/lanzaboote.nix"
-
-    #       "${mod}/programs/gamemode.nix"
-    #       "${mod}/programs/hyprland.nix"
-    #       "${mod}/programs/games.nix"
-
-    #       "${mod}/services/kanata"
-    #       {home-manager.users.mihai.imports = homeImports."mihai@rog";}
-    #     ];
-    # };
-
-    # kiiro = nixosSystem {
-    #   inherit specialArgs;
-    #   modules =
-    #     desktop
-    #     ++ [
-    #       ./kiiro
-    #       {home-manager.users.mihai.imports = homeImports.server;}
-    #     ];
-    # };
   };
 }

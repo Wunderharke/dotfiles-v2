@@ -11,11 +11,15 @@
   home.packages = with pkgs; [
     tdesktop
 
-    gnome.gnome-calculator
+    gnome-calculator
     gnome.gnome-control-center
 
     overskride
     mission-center
     wineWowPackages.wayland
+
+    jellyfin-media-player
+
+    firedragon
   ];
 }

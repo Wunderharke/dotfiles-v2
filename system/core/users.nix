@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  users.users.mihai = {
+  users.users.falk = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
